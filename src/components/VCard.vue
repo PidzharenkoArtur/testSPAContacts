@@ -27,6 +27,9 @@ export default {
     },
     borderLeft: {
       type: String
+    },
+    padding: {
+      type: String  
     }
   },
   data() {
@@ -35,7 +38,8 @@ export default {
         width: this.width,
         background: this.color,
         boxShadow: this.boxShadow,
-        borderLeft: this.borderLeft  
+        borderLeft: this.borderLeft,
+        padding: this.padding
       },
       styleElementTop: {
         marginBottom: this.marginBottom   
@@ -48,15 +52,13 @@ export default {
 <style lang="scss" scoped>
 .card {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  border-radius: 5px; 
-  padding: 5px;
   width: 355px;
 
   .top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 15px;
+    height: 0;
   }
 }
 </style>

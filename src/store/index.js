@@ -5,37 +5,23 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        notesList: JSON.parse(localStorage.getItem('notesList')) || [],
+        tablesList: JSON.parse(localStorage.getItem('tablesList')) || [],
         indexHistoryNotesList: null
     },
     mutations: {
         addList(state, item) {
-            state[item.type].unshift(item)
+            state[item.type].push(item)
+            this.commit('setLocalStorage', item.type)
+        },
+
+        editList(state, item) {
+            state[item.type][item.id] = item
             this.commit('setLocalStorage', item.type)
         },
         
-        removeList(state, item) {
+        removeItem(state, item) {
             state[item.type].splice(item.index, 1);
-            
             this.commit('setLocalStorage', item.type)
-        },
-        
-        addToDoInList({notesList}, item) {
-            let {notesListId, type, ...rest} = item
-            notesList[notesListId].todo.push(rest)
-
-            this.commit('setLocalStorage', 'notesList')
-        },
-        removeToDoInList({notesList}, item) {
-            notesList[item.noteIndex].todo.splice(item.index, 1);
-            
-            this.commit('setLocalStorage', item.type)
-        },
-
-        addPropertyTodoList({notesList}, item) {
-            notesList[item.notesListId].todo[item.indexTodo][item.property.name] = item.property.value
-            
-            this.commit('setLocalStorage', 'notesList')
         },
 
         setLocalStorage(state, type) {

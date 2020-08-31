@@ -6,13 +6,13 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Notes',
-    component: () => import('../views/Notes')
+    name: 'Tables',
+    component: () => import('../views/Tables')
   },
   {
-    path: '/note/:id',
-    name: 'Note',
-    component: () => import('../views/Note.vue')
+    path: '/table/:id',
+    name: 'Table',
+    component: () => import('../views/Table.vue')
   }
 ]
 

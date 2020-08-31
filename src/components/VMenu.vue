@@ -6,8 +6,7 @@
     </svg>
     <VCard v-if="isMenu" class="menu-container">
       <template #top>
-        <div class="title">Выберите действие:</div>
-        <VButton size="null">
+        <VButton class="close" size="null">
           <svg @click="switchMenu" class="delete" style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="#fb8c00" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
           </svg>
@@ -27,7 +26,7 @@ import VButton from '@/components/VButton'
 export default {
   name: 'VMenu',
   props: {
-    _isMenu: {}
+    _isMenu: {},
   },
   data() {
     return {
@@ -51,10 +50,9 @@ export default {
     }
   },
   watch: {
-    _isMenu(val) {
-      this.isMenu = !val
+    _isMenu() {
+      this.isMenu = !this.isMenu 
       this.isStyleMenu=!this.isStyleMenu
-      this.$emit('menu')
     }
   },
   components: {
@@ -66,26 +64,33 @@ export default {
 
 <style lang="scss" scoped>
 .menu {
-  position: relative;
+  position: absolute;
   cursor: pointer;
+  right: -28px;
+  top: 0px;
+  height: 24px;
+  border: 2px solid;
+  border-left: 0;
+  background: rgb(235, 236, 240);
+  .close {
+    position: absolute;
+    right: 0;
+  }
   &-open, .delete {
+    
     &:hover {
       background: rgba(0,0,0, 0.1);
-      border-radius: 5px; 
     }
   }
   &-container {
     background: white;
     position: absolute;
-    width: 200px;
+    width: 100px;
     height: auto;
     left: 10px;
     top: 0px;
     padding: 10px;
     z-index: 1;
-    .title{
-      font-size: 14px;
-    }
   }
 
   &-list {

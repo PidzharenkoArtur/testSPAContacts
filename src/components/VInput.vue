@@ -3,7 +3,7 @@
   v-model="value"
   autofocus
   class="input"
-  placeholder="Заголовок"
+  :placeholder="placeholder"
   />
 </template>
 
@@ -14,17 +14,17 @@ export default {
   props: {
     _value: {
       type:String
+    },
+    placeholder: {
+      type: String
     }
   },
   data() {
     return {
-      value: null
+      value: this._value
     }
   },
   watch: {
-    _value(val) {
-      this.value = val
-    },
     value(val) {
       this.$emit('input', val)
     }
@@ -34,6 +34,8 @@ export default {
 
 <style lang="scss" scoped>
 .input{
+  width: 100%;
+  box-sizing: border-box;
   font-weight: bold;
   padding: 9px;
   border:2px solid #fb8c00;
