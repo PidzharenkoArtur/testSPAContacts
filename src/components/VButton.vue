@@ -26,6 +26,9 @@ export default {
     disabled: {
       type: Boolean,
       default: true
+    },
+    text: {
+      default: null
     }
   },
   computed: {
@@ -49,10 +52,19 @@ export default {
   font-weight: bold;
   border-radius: 5px;
   padding: 20px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
     opacity: 0.9;
+  }
+}
+.text--true {
+  color: black;
+  padding: 0;
+  &:hover {
+    color: #fb8c00;
   }
 }
 .color--green {
